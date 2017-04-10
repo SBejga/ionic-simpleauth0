@@ -1,31 +1,36 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Profile</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-right (click)="doLogout()">
+        Logout
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="cards-bg">
-  <ion-card class="slideDown">
-        <ion-card-header>
-          Profile
-        </ion-card-header>
-
-        <ion-list>
-            <ion-item *ngIf="user.profile">
-              <ion-avatar item-left>
-                <img [src]="user.profile.picture">
-              </ion-avatar>
-              <h2>{{user.profile.nickname}}</h2>
-              <h3>{{user.profile.email}}</h3>
-            </ion-item>
-            <ion-item>
-              <ion-icon [name]="user.profile.email_verified ? 'checkmark': 'close'" item-left></ion-icon>
-              {{user.profile.email_verified ? 'email verified' : 'email unverified'}}
-            </ion-item>
-            <ion-item>
-              <ion-icon name="calendar" item-left></ion-icon>
-              {{user.profile.created_at | date: 'dd.MM.yyyy H:mm'}}
-              </ion-item>
-        </ion-list>
-      </ion-card>
+  <ion-card class="slideDown" *ngIf="user.profile">
+    <ion-card-header>
+      Profile
+    </ion-card-header>
+    <ion-list>
+        <ion-item>
+          <ion-avatar item-left>
+            <img [src]="user.profile.picture">
+          </ion-avatar>
+          <h2>{{user.profile.nickname}}</h2>
+          <h3>{{user.profile.email}}</h3>
+        </ion-item>
+        <ion-item>
+          <ion-icon [name]="user.profile.email_verified ? 'checkmark': 'close'" item-left></ion-icon>
+          {{user.profile.email_verified ? 'email verified' : 'email unverified'}}
+        </ion-item>
+        <ion-item>
+          <ion-icon name="calendar" item-left></ion-icon>
+          {{user.profile.created_at | date: 'dd.MM.yyyy H:mm'}}
+          </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>
