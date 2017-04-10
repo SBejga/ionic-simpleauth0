@@ -6,4 +6,9 @@
 
     # --- commit ---
 
-    
+    ionic g page login
+    ionic g page profile
+    # update app.components.ts
+    # update app.module.ts
+    # update tabs to contain profile and about
+    # minor update of about
