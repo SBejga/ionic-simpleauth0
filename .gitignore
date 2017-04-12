@@ -34,4 +34,4 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 typings/cordova-typings.d.ts
 
-src/config/*
+src/config/auth0.ts

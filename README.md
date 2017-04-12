@@ -38,6 +38,21 @@ If there is an access token the login will skipped and profile page will be show
 
     # --- commit ---
 
+## auth0 config
+
+auth0 is used to authenticate the user. Therefore you have to provide the domain, client id. See `src/config/auth0.example.ts` and save as `src/config/auth0.ts`
+
+    export class Auth0Config {
+        static AUTH0_DOMAIN = "https://<YOUR-DOMAIN>.eu.auth0.com";
+        static AUTH0_CLIENTID = "<YOUR-CLIENTID>";
+        static AUTH0_CONNECTION = "Username-Password-Authentication";
+    };
+
+in auth0 you have to setup a client (e.g. native app for this ionic app). 
+The connection using 'Username-Password-Authentication' database should be activated by default.
+
+In the section 'Connections > Database' you can use 'Try' to register a user.
+
 ## run
 
 **install**
