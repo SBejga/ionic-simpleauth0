@@ -27,6 +27,11 @@ export class ProfilePage {
         position: 'top'
       });
       toast.present();
+
+      //401
+      if (err.status == 401) {
+        this.doLogout();
+      }
     });
   }
 

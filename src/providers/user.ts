@@ -1,3 +1,5 @@
+import { Storage } from '@ionic/storage';
+
 import { Injectable } from '@angular/core';
 import { Auth } from './auth';
 import 'rxjs/add/operator/map';
@@ -12,7 +14,7 @@ export class User {
   token: String = null;
   profile: any = null;
 
-  constructor(public auth: Auth) {}
+  constructor(public auth: Auth, public storage: Storage) {}
 
   /**
    * Login of user
@@ -24,7 +26,9 @@ export class User {
       seq.subscribe(res => {
           // If the API returned a successful response, mark the user as logged in
           if(res.access_token && res.token_type) {
-            this.token = res.access_token;
+
+            //save and persist token
+            this.setToken(res.access_token);
             resolve();
 
           } else {
@@ -56,7 +60,7 @@ export class User {
    * Log the user out, which forgets the session
    */
   logout() {
-    this.token = null;
+    this.setToken(null);
     this.profile = {};
   }
 
@@ -65,5 +69,32 @@ export class User {
    */
   isLoggedIn() {
     return (this.token != null);
+  }
+
+  //*
+  // Storage Methods to load and persist access token
+  //*
+  
+  setToken(data): void {
+    this.token = data;
+
+    this.storage.set('token', data).then((d) => {
+      console.log("saved token to storage: %s", d);
+    });
+  }
+
+  loadToken() {
+    return new Promise((resolve, reject) => {
+      this.storage.get('token').then((d) => {
+        this.token = d;
+        console.log("loaded token from storage: %s", this.token);
+
+        if (this.token !== null) {
+          resolve();
+        } else {
+          reject();
+        }
+      });
+    });
   }
 }

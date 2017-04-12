@@ -23,3 +23,10 @@
     # update profile.ts to use User provider
 
     # --- commit ---
+
+    # update `app.module.ts` to import 'IonicStorageModule.forRoot()'
+    # update `user.ts` to persist and load token using Storage
+    # update `profile.ts` to remove token when logout or getting http 401
+    # update `app.component.ts` to load token from Storage and switch to Login or Profile Page
+
+    # --- commit ---
