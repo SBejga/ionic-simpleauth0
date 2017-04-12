@@ -1,5 +1,12 @@
 # ion-simpleauth
 
+Ionic 2 & 3 example project how to use auth0 and to save the access token with Ionic Storage. 
+
+- Login Page
+- Profile Page (auth0 user details) 
+
+If there is an access token the login will skipped and profile page will be shown. If there is no access token stored, login page will shown.
+
 ## steps
 
     ionic start ion-simpleauth tabs --v2
@@ -30,3 +37,25 @@
     # update `app.component.ts` to load token from Storage and switch to Login or Profile Page
 
     # --- commit ---
+
+## run
+
+**install**
+
+    git clone
+    npm install
+
+**run in browser**
+
+    ionic serve
+
+**run on ios**
+
+    ionic platform add ios
+    ionic run ios
+
+**run on android**
+
+    ionic platform add android
+    ionic run android
+
